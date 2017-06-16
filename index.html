@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Webpack 2 Setup</title>
+  
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row title-header">
+			<h2 class="text-center">Handlebars Photo Gallery</h2>
+		</div>
+		<div id="photo-album" class="row photo-album-background-color"></div>
+
+		<script id="photos-template" type="text/x-handlebars-template">
+		{{#each this}}
+			<div class="col-xs-3">
+				<div class="col-xs-12 thumbnail">
+					<div class="col-xs-6">
+						<div class="photo-title">Photo {{id}}</div>
+					</div>
+					<div class="col-xs-6">
+						<a href="{{thumbnailUrl}}?id_is:{{id}}" target="_blank" class="btn btn-primary pull-right" role="button">View Photo</a>
+					</div>
+					<div class="img-thumb col-xs-12">
+						<img src="{{thumbnailUrl}}" alt="thumbnail image">
+						<span class="text-content"><span>{{addExcitement title}}</span></span>
+					</div>
+					
+				</div>
+			</div>
+		{{/each}}
+	</script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+	<script type="text/javascript" src="bundle.js"></script>
+
+	</div>
+</body>
+</html>
