@@ -63,8 +63,7 @@ var config = {
       {test: /bootstrap\/dist\/js\/umd\//, loader: 'imports?jQuery=jquery'},
   		{test: /\.hbs$/, loader: "handlebars-loader"},
       {test: /\.handlebars$/, loader: "handlebars-loader"},
-      // {test: /\.handlebars$/, loader:__dirname + "./"}, 
-      {test: /\.(png|jpg|woff|woff2|eot|ttf|otf)/, loader: 'url-loader'}
+      {test: /\.(png|jpg|woff|woff2|eot|ttf|otf|svg)$/, loader: 'url-loader?limit=100000' }
 
   	]
   },
