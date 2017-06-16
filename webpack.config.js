@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require("path");
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const loaders = {
@@ -74,12 +75,18 @@ var config = {
       $: 'jquery',
       jquery: 'jquery'
     }),
-    new ExtractTextPlugin('[name].css')
+    new ExtractTextPlugin('[name].css'),
+    new HtmlWebpackPlugin({
+     title: 'Custom template using Handlebars',
+     template: 'main.handlebars'
+   })
   ],
-
   resolve: {
     extensions: ['.hbs', '.js', '.sass'],
-    modules: [path.join(__dirname), 'node_modules']
+    modules: [path.join(__dirname), 'node_modules'],
+    alias: {
+      handlebars: 'handlebars.min.js'
+    }
   },
 
   devtool: "eval-source-map" //default developement sourcemap

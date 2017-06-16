@@ -4,11 +4,14 @@ var template = require("./main.handlebars");
 
 var root = 'https://jsonplaceholder.typicode.com';
 
-$.ajax({
-  url: root + '/photos',
-  method: 'GET'
-}).then(function(data) {
-  formatData(data);
+
+$(document).ready(function () {
+	$.ajax({
+	  url: root + '/photos',
+	  method: 'GET'
+	}).then(function(data) {
+	  formatData(data);
+	});
 });
 
 function formatData(data){
@@ -19,16 +22,20 @@ function formatData(data){
 	createHTML(onlyLike21);
 };
 
-Handlebars.registerHelper("addExcitement", function(excitement){
-	var moreExcitement = " !!!";
-	return excitement + moreExcitement;
-});
+// Handlebars.registerHelper("addExcitement", function(excitement){
+// 	var moreExcitement = " !!!";
+// 	return excitement + moreExcitement;
+// });
 
 function createHTML(photosData){
-	var theTemplate = document.getElementById('photos-template').innerHTML;
+	//var theTemplate = document.getElementById('photos-template').innerHTML;
+	var theTemplate = template;
+	console.log('photosData is: ' + photosData)
+	
 	var compiledTemplate = Handlebars.compile(theTemplate);
 	var newHTML = compiledTemplate(photosData);
 	var photoAlbum = document.getElementById('photo-album');
 	
 	photoAlbum.innerHTML = newHTML;
+
 };
