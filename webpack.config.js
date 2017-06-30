@@ -29,6 +29,10 @@ const loaders = {
 
 var config = {
   
+    node: {
+     fs: "empty"
+  }
+
   context: __dirname, // `__dirname` is root of project and `src` is source
   
   entry: {
@@ -75,18 +79,18 @@ var config = {
       $: 'jquery',
       jquery: 'jquery'
     }),
-    new ExtractTextPlugin('[name].css'),
-    new HtmlWebpackPlugin({
-     title: 'Custom template using Handlebars',
-     template: 'main.handlebars'
-   })
+    new ExtractTextPlugin('[name].css')
+   //  new HtmlWebpackPlugin({
+   //   title: 'Custom template using Handlebars',
+   //   template: 'main.handlebars'
+   // })
   ],
   resolve: {
-    extensions: ['.hbs', '.js', '.sass'],
-    modules: [path.join(__dirname), 'node_modules'],
-    alias: {
-      handlebars: 'handlebars.min.js'
-    }
+    extensions: ['.hbs', '.js', '.sass', '.handlebars'],
+    modules: [path.join(__dirname), 'node_modules']
+    // alias: {
+    //    handlebars: 'handlebars/dist/handlebars.min.js'
+    //  }
   },
 
   devtool: "eval-source-map" //default developement sourcemap
